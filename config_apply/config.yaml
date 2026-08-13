@@ -1,0 +1,33 @@
+name: HA Config Apply
+version: "0.1.0"
+slug: config_apply
+description: >-
+  Past de GitHub-gehoste Home Assistant-config toe wanneer je op een knop drukt.
+  Haalt de nieuwste desired/ uit de repo en past alleen de gewijzigde dashboards
+  en automations toe, daarna een verificatie. Geen pollen: jij bepaalt wanneer.
+url: https://github.com/dirkjanv_microsoft/ha-config-apply-addon
+arch:
+  - aarch64
+  - amd64
+init: false
+# Toegang tot de HA Core API via de Supervisor-proxy, zodat er GEEN los
+# HA-token nodig is en Protection mode AAN kan blijven.
+homeassistant_api: true
+hassio_api: false
+# Persistente opslag voor de gekloonde repo + laatst-toegepaste commit.
+map:
+  - addon_config:rw
+options:
+  github_repo: "dirkjanv_microsoft/home-assistant-config"
+  github_ref: "main"
+  github_token: ""
+  button_entity: "input_button.config_toepassen"
+  status_entity: "input_text.config_apply_status"
+  apply_scope: "changed"
+schema:
+  github_repo: str
+  github_ref: str
+  github_token: password
+  button_entity: str
+  status_entity: str
+  apply_scope: "list(changed|all)"

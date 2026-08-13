@@ -1,0 +1,11 @@
+ARG BUILD_FROM
+FROM $BUILD_FROM
+
+# git to fetch the config repo; python3 + libs to run the repo's apply scripts.
+RUN apk add --no-cache git python3 py3-pip \
+    && pip3 install --no-cache-dir --break-system-packages websocket-client
+
+COPY run.py /run.py
+RUN chmod +x /run.py
+
+CMD [ "python3", "-u", "/run.py" ]
