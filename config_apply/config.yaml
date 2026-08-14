@@ -1,10 +1,10 @@
 name: HA Config Apply
-version: "0.1.2"
+version: "0.2.0"
 slug: config_apply
 description: >-
-  Past de GitHub-gehoste Home Assistant-config toe wanneer je op een knop drukt.
-  Haalt de nieuwste desired/ uit de repo en past alleen de gewijzigde dashboards
-  en automations toe, daarna een verificatie. Geen pollen: jij bepaalt wanneer.
+  Past de GitHub-gehoste Home Assistant-config toe op een knop (apply), en kan de
+  live HA-staat exporteren naar de repo: rechtstreeks naar main, of naar een
+  nieuwe branch met een Pull Request. Geen pollen: jij bepaalt wanneer.
 url: https://github.com/dirkjanv-prive/ha-config-apply-addon
 arch:
   - aarch64
@@ -23,12 +23,20 @@ options:
   github_ref: "main"
   github_token: ""
   button_entity: "input_button.config_toepassen"
+  export_main_button: "input_button.config_exporteren_naar_main"
+  export_branch_button: "input_button.config_exporteren_naar_branch"
   status_entity: "input_text.config_apply_status"
   apply_scope: "changed"
+  git_name: "HA Config Apply"
+  git_email: ""
 schema:
   github_repo: str
   github_ref: str
   github_token: password
   button_entity: str
+  export_main_button: str?
+  export_branch_button: str?
   status_entity: str
   apply_scope: "list(changed|all)"
+  git_name: str?
+  git_email: str?
