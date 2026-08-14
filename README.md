@@ -16,7 +16,7 @@ via de Supervisor-proxy: geen los HA-token, Protection mode kan aan blijven.
 Instellingen → Add-ons → Add-on Store → ⋮ → Repositories → voeg toe:
 
 ```
-https://github.com/dirkjanv_microsoft/ha-config-apply-addon
+https://github.com/dirkjanv-prive/ha-config-apply-addon
 ```
 
 Zie [config_apply/DOCS.md](./config_apply/DOCS.md) voor de volledige uitleg.

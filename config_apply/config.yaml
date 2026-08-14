@@ -5,7 +5,7 @@ description: >-
   Past de GitHub-gehoste Home Assistant-config toe wanneer je op een knop drukt.
   Haalt de nieuwste desired/ uit de repo en past alleen de gewijzigde dashboards
   en automations toe, daarna een verificatie. Geen pollen: jij bepaalt wanneer.
-url: https://github.com/dirkjanv_microsoft/ha-config-apply-addon
+url: https://github.com/dirkjanv-prive/ha-config-apply-addon
 arch:
   - aarch64
   - amd64
@@ -18,7 +18,7 @@ hassio_api: false
 map:
   - addon_config:rw
 options:
-  github_repo: "dirkjanv_microsoft/home-assistant-config"
+  github_repo: "dirkjanv-prive/home-assistant-config"
   github_ref: "main"
   github_token: ""
   button_entity: "input_button.config_toepassen"

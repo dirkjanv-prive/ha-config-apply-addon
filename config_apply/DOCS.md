@@ -23,7 +23,7 @@ Geen pollen: er gebeurt alleen iets als jij drukt (ook via de HA-app op je mobie
 
 | Optie | Betekenis |
 |-------|-----------|
-| `github_repo` | `owner/repo`, bijv. `dirkjanv_microsoft/home-assistant-config` |
+| `github_repo` | `owner/repo`, bijv. `dirkjanv-prive/home-assistant-config` |
 | `github_ref` | branch, meestal `main` |
 | `github_token` | fine-grained PAT, **Contents: Read-only** op alleen deze repo |
 | `button_entity` | de knop-helper, bijv. `input_button.config_toepassen` |
@@ -59,7 +59,7 @@ cards:
 ## Installatie
 
 1. Voeg de repository toe in HA: Instellingen → Add-ons → Add-on Store → ⋮ →
-   Repositories → `https://github.com/dirkjanv_microsoft/ha-config-apply-addon`.
+   Repositories → `https://github.com/dirkjanv-prive/ha-config-apply-addon`.
 2. Installeer **HA Config Apply**.
 3. Vul bij Configuratie de opties in (vooral `github_token`).
 4. Start de add-on.
