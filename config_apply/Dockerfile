@@ -6,6 +6,8 @@ RUN apk add --no-cache git python3 py3-pip \
     && pip3 install --no-cache-dir --break-system-packages websocket-client
 
 COPY run.py /run.py
-RUN chmod +x /run.py
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
 
-CMD [ "python3", "-u", "/run.py" ]
+# Start via with-contenv (in run.sh) so SUPERVISOR_TOKEN reaches the process.
+CMD [ "/run.sh" ]

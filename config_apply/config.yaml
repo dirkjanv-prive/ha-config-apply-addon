@@ -1,5 +1,5 @@
 name: HA Config Apply
-version: "0.1.1"
+version: "0.1.2"
 slug: config_apply
 description: >-
   Past de GitHub-gehoste Home Assistant-config toe wanneer je op een knop drukt.
