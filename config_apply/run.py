@@ -24,7 +24,11 @@ import time
 import websocket  # websocket-client
 
 OPTIONS = json.loads(pathlib.Path("/data/options.json").read_text())
-SUPERVISOR_TOKEN = os.environ["SUPERVISOR_TOKEN"]
+SUPERVISOR_TOKEN = os.environ.get("SUPERVISOR_TOKEN") or os.environ.get("HASSIO_TOKEN")
+if not SUPERVISOR_TOKEN:
+    print("[config_apply] FATAL: no SUPERVISOR_TOKEN in environment. "
+          "The add-on needs 'hassio_api: true' in config.yaml.", flush=True)
+    raise SystemExit(1)
 
 # Supervisor proxy endpoints (no HA token needed).
 CORE_BASE = "http://supervisor/core"          # REST: /core/api/...

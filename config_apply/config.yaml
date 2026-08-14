@@ -1,5 +1,5 @@
 name: HA Config Apply
-version: "0.1.0"
+version: "0.1.1"
 slug: config_apply
 description: >-
   Past de GitHub-gehoste Home Assistant-config toe wanneer je op een knop drukt.
@@ -11,9 +11,10 @@ arch:
   - amd64
 init: false
 # Toegang tot de HA Core API via de Supervisor-proxy, zodat er GEEN los
-# HA-token nodig is en Protection mode AAN kan blijven.
+# HA-token nodig is en Protection mode AAN kan blijven. hassio_api zorgt dat de
+# SUPERVISOR_TOKEN in de container beschikbaar is.
 homeassistant_api: true
-hassio_api: false
+hassio_api: true
 # Persistente opslag voor de gekloonde repo + laatst-toegepaste commit.
 map:
   - addon_config:rw
