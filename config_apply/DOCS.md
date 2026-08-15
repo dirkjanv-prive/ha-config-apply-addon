@@ -9,7 +9,9 @@ acties uit (er wordt niet gepolld):
 
 - **Config toepassen** (`input_button.config_toepassen`): haalt de nieuwste
   `desired/` op en past de gewijzigde dashboards/automations toe via
-  `apply_ha.py`, met verificatie achteraf.
+  `apply_ha.py`, met verificatie achteraf. Spiegelt daarnaast
+  `desired/packages/*.yaml` naar `<HA-config>/gitops_packages/` (helpers via
+  GitOps) en roept `homeassistant.reload_all` aan als er iets wijzigde.
 - **Config exporteren naar main** (`input_button.config_exporteren_naar_main`):
   leest de live HA-staat via `export_ha.py` en commit + pusht die **rechtstreeks
   naar `main`**.
@@ -90,3 +92,26 @@ GitHub → Settings → Developer settings → **Fine-grained tokens** → Gener
 - **Permissions** → Repository permissions → **Contents: Read-only**
 
 Plak het token in de add-on-optie `github_token`.
+
+## Helpers via GitOps (packages)
+
+Vanaf v0.3.0 kunnen ook **helpers** (input_*, template-sensoren/-lichten,
+groepen, light-groepen, ...) via de repo beheerd worden. Zet een package-YAML in
+`desired/packages/<naam>.yaml`; de apply-knop spiegelt die naar
+`<HA-config>/gitops_packages/`.
+
+Eenmalige setup (naast het updaten van de add-on):
+
+1. De add-on heeft nu `homeassistant_config:rw` nodig; bevestig de toegang bij
+   de update.
+2. Voeg in `configuration.yaml` toe (samenvoegen als je al `homeassistant:` hebt):
+
+   ```yaml
+   homeassistant:
+     packages: !include_dir_named gitops_packages
+   ```
+
+**Reload vs restart:** `homeassistant.reload_all` activeert de meeste helpers
+zonder herstart. Een `light:`-platform-groep wordt pas na een volledige
+HA-herstart opgepikt.
+
