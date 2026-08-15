@@ -54,6 +54,7 @@ APPLY_ENV = {
     "HA_URL": CORE_BASE,
     "HA_TOKEN": SUPERVISOR_TOKEN,
     "HA_WS_URL": CORE_WS,
+    "HA_CONFIG_DIR": "/homeassistant",
     "PYTHONIOENCODING": "utf-8",
     "PYTHONUNBUFFERED": "1",
 }
@@ -264,5 +265,5 @@ def listen() -> None:
 
 
 if __name__ == "__main__":
-    log(f"starting v0.2.0; repo={REPO} ref={REF}")
+    log(f"starting v0.3.0; repo={REPO} ref={REF}")
     listen()
